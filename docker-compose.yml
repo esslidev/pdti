@@ -41,9 +41,6 @@ services:
     ports:
       - "${API_PORT}:${API_PORT}"
       - "${STUDIO_PORT}:${STUDIO_PORT}"
-    #expose:
-    #  - "4003"
-    #  - "5555"
     depends_on:
       db_pdti:
         condition: service_healthy

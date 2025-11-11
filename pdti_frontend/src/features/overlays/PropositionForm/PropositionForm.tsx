@@ -50,7 +50,7 @@ const PropositionForm: React.FC<PropositionFormProps> = ({ axisId }) => {
 
       <form onSubmit={handleSubmit} className="proposition-form">
         <div className="form-group">
-          <label htmlFor="firstName">الاسم الأول *</label>
+          <label htmlFor="firstName">الإسم الشخصي *</label>
           <input
             id="firstName"
             type="text"
@@ -58,13 +58,13 @@ const PropositionForm: React.FC<PropositionFormProps> = ({ axisId }) => {
             onChange={(e) =>
               setFormData({ ...formData, firstName: e.target.value })
             }
-            placeholder="أدخل الاسم الأول"
+            placeholder="أدخل الاسم الشخصي"
             disabled={loading}
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="lastName">اسم العائلة *</label>
+          <label htmlFor="lastName">الإسم العائلي *</label>
           <input
             id="lastName"
             type="text"
@@ -72,7 +72,7 @@ const PropositionForm: React.FC<PropositionFormProps> = ({ axisId }) => {
             onChange={(e) =>
               setFormData({ ...formData, lastName: e.target.value })
             }
-            placeholder="أدخل اسم العائلة"
+            placeholder="أدخل الإسم العائلي"
             disabled={loading}
           />
         </div>
@@ -99,7 +99,7 @@ const PropositionForm: React.FC<PropositionFormProps> = ({ axisId }) => {
             onChange={(e) =>
               setFormData({ ...formData, proposition: e.target.value })
             }
-            placeholder="اكتب اقتراحك هنا..."
+            placeholder="أكتب إقتراحك هنا..."
             rows={6}
             disabled={loading}
           />

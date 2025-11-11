@@ -8,8 +8,8 @@ const Header: React.FC = () => {
       <div className="header-container">
         {/* Left text */}
         <div className="header-left">
-          <p>المملكة المغربية</p>
-          <p>وزارة الداخلية</p>
+          <p style={{ color: "#da3137ff" }}>المملكة المغربية</p>
+          <p style={{ color: "#0da85dff" }}>وزارة الداخلية</p>
           <p>ولاية جهة العيون الساقية الحمراء</p>
           <p>عمالة اقليم السمارة</p>
         </div>
@@ -21,8 +21,8 @@ const Header: React.FC = () => {
 
         {/* Right text */}
         <div className="header-right">
-          <p>ⵜⴰⴳⵍⴷⵉⵜ ⵏ ⵍⵎⵖⵔⵉⴱ</p>
-          <p>ⵜⴰⵎⴰⵡⴰⵙⵜ ⵏ ⵓⴳⵏⵙⵓ</p>
+          <p style={{ color: "#da3137ff" }}>ⵜⴰⴳⵍⴷⵉⵜ ⵏ ⵍⵎⵖⵔⵉⴱ</p>
+          <p style={{ color: "#0da85dff" }}>ⵜⴰⵎⴰⵡⴰⵙⵜ ⵏ ⵓⴳⵏⵙⵓ</p>
           <p>ⵍⵡⵉⵍⴰⵢⴰ ⵏ ⵜⵎⵏⴰⴹⵜ ⵏ ⵍⵄⵢⵓⵏ - ⵙⵙⴰⵇⵢⴰ ⵍⵃⵎⵕⴰ</p>
           <p>ⵜⴰⵎⵏⴱⴰⴹⵜ ⵏ ⵜⵙⴳⴰ ⵏ ⵙⵙⵎⴰⵕⴰ</p>
         </div>
