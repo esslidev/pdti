@@ -1,35 +1,41 @@
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
+import hero1 from "./../../../../../assets/images/hero-1.jpg";
+import hero2 from "./../../../../../assets/images/hero-2.jpg";
+import hero3 from "./../../../../../assets/images/hero-3.jpg";
+import hero4 from "./../../../../../assets/images/hero-4.jpg";
+import hero5 from "./../../../../../assets/images/hero-5.jpg";
+import hero6 from "./../../../../../assets/images/hero-6.jpg";
 
 import "./HeroSection.css";
 
 const HeroSection = () => {
   const itemData = [
     {
-      img: "https://i0.wp.com/sahara1.net/wp-content/uploads/2025/10/FB_IMG_1760877230396.jpg?fit=2048%2C1236&ssl=1&resize=%20770%2C433&strip=all&quality=75",
+      img: hero1,
       title: "smara",
       rows: 2,
       cols: 2,
     },
     {
-      img: "https://www.spectator.co.uk/wp-content/uploads/2025/06/Aidan-iStock.png?w=1000",
+      img: hero2,
       title: "camels",
     },
     {
-      img: "https://www.infostourismemaroc.com/uploads/images/gallery/5ec3d0902653a_visiter-smara-sahara-infos-tourisme-maroc.jpg",
+      img: hero3,
       title: "smara",
     },
     {
-      img: "https://saharatodos.ma/wp-content/uploads/2022/04/Picsart_22-04-28_17-26-01-679-scaled.jpg",
+      img: hero4,
       title: "smara",
     },
 
     {
-      img: "https://www.mshtly.com/uploads/products/%D8%A7%D9%84%D8%B7%D9%84%D8%AD-1.webp",
+      img: hero5,
       title: "tree",
     },
     {
-      img: "https://dawa.center/images/islamic-centers/EqXDUpjO49922rAaiQSSgYA8FWqoXIsBTKQcHFEh%D8%A7%D9%84%D9%85%D8%B3%D8%AC%D8%AF%20%D8%A7%D9%84%D8%B9%D8%AA%D9%8A%D9%82%20%D8%A7%D9%84%D8%B3%D9%85%D8%A7%D8%B1%D8%A9.jpg",
+      img: hero6,
       title: "smara",
     },
   ];
