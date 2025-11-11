@@ -1,0 +1,30 @@
+.axis-section {
+  max-width: 1600px;
+  margin: 0 auto;
+  align-items: center;
+  gap: 4rem;
+  align-items: center;
+  padding: 2rem 2rem;
+  box-sizing: border-box;
+}
+
+.axis-title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3rem;
+  gap: 1.5rem;
+}
+
+.axis-line {
+  flex: 1;
+  height: 2px;
+  background-color: #c2c1c1;
+}
+
+.axis-title {
+  font-size: 3rem;
+  font-weight: 600;
+  margin: 0;
+  white-space: nowrap;
+}

@@ -1,0 +1,71 @@
+services:
+  db_pdti:
+    container_name: db_pdti
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+    ports:
+      - 3307:${DB_PORT}
+    networks:
+      - pdti_networks
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-p${DB_PASSWORD}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  php-my-admin:
+    container_name: php-my-admin
+    image: phpmyadmin:latest
+    restart: always
+    environment:
+      PMA_HOST: ${DB_HOST}
+      PMA_ARBITRARY: 1
+    ports:
+      - 8081:80
+    networks:
+      - pdti_networks
+
+  pdti-backend:
+    container_name: pdti-backend
+    stdin_open: true
+    tty: true
+    command: sh -c "yarn start & yarn run studio"
+    restart: always
+    build:
+      context: ./pdti_backend
+      dockerfile: Dockerfile
+    ports:
+      - "${API_PORT}:${API_PORT}"
+      - "${STUDIO_PORT}:${STUDIO_PORT}"
+    #expose:
+    #  - "4003"
+    #  - "5555"
+    depends_on:
+      db_pdti:
+        condition: service_healthy
+
+    env_file:
+      - .env
+    networks:
+      - pdti_networks
+
+  pdti-frontend:
+    container_name: pdti-frontend
+    build:
+      context: ./pdti_frontend
+      dockerfile: Dockerfile
+    ports:
+      - "${FRONTEND_PORT}:${FRONTEND_PORT}"
+    restart: always
+    depends_on:
+      - pdti-backend
+    networks:
+      - pdti_networks
+
+networks:
+  pdti_networks:
+    driver: bridge

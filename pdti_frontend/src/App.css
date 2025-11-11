@@ -1,0 +1,157 @@
+/* init.css */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap");
+
+/* ===== Reset + Base ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Kufi Arabic", sans-serif;
+  background-color: var(--background-color);
+  color: #222;
+  line-height: 1.6;
+}
+
+/* Globalizing colors */
+:root {
+  --primary-color: #d97706;
+  --danger-color: #ca4d3f;
+  --text-color: #374151;
+  --secondary-text-color: #616161;
+  --third-text-color: #a0a0a0;
+  --background-color: #eef1f5;
+}
+
+/* Hide default date/time picker icon in most browsers */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+input[type="date"]::-moz-calendar-picker-indicator,
+input[type="time"]::-moz-calendar-picker-indicator {
+  display: none;
+  -moz-appearance: none;
+}
+
+/* For IE/Edge (if needed) */
+input[type="date"]::-ms-clear,
+input[type="date"]::-ms-expand,
+input[type="time"]::-ms-clear,
+input[type="time"]::-ms-expand {
+  display: none;
+}
+
+/* ===== Layout Helpers ===== */
+.page {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 180px;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+/* ===== Utility Classes ===== */
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* ===== Form Defaults ===== */
+input,
+textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: unset;
+  border: unset;
+  outline: none;
+  color: var(--text-color);
+  background-color: white;
+}
+
+select {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: unset;
+  border-radius: unset;
+  background-color: white;
+  appearance: unset;
+  outline: unset;
+  cursor: pointer;
+  transition: border 0.2s, box-shadow 0.2s;
+
+  /* custom arrow */
+  background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='20' viewBox='0 0 20 20' width='20' xmlns='http://www.w3.org/2000/svg'><polygon points='0,0 20,0 10,10'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  padding-right: 2.5rem; /* leave space for arrow */
+}
+
+select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+select option {
+  padding: 0.5rem;
+  color: var(--text-color);
+  background-color: white;
+  margin-top: 8px;
+}
+
+button {
+  cursor: pointer !important;
+  background-color: var(--primary-color) !important;
+  color: white !important;
+  border: unset !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  transition: background-color 0.5s ease !important;
+}
+
+button:hover {
+  background-color: #ca6907 !important;
+}
+
+/* ===== Responsive Text ===== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: 600;
+}
+
+p {
+  margin: 0.5rem 0;
+}

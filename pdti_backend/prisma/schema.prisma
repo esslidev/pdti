@@ -1,0 +1,46 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+////////////////////////////////////////////////////////////////////
+
+model Axis {
+  id       String   @id @default(uuid())
+  givenId  String @unique
+  name String
+  title String
+  imageUrl String
+  propositions Proposition[]
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+  deletedAt   DateTime?
+}
+
+model Visitor {
+  id        String    @id @default(uuid())
+  firstName String
+  lastName  String
+  email String? 
+  propositions Proposition[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+}
+
+model Proposition {
+  id          String          @id @default(uuid())
+  axisId   String
+  visitorId   String
+  proposition String          @db.LongText
+  axis     Axis         @relation(fields: [axisId], references: [id], onUpdate: Cascade)
+  visitor     Visitor         @relation(fields: [visitorId], references: [id], onUpdate: Cascade)
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+  deletedAt   DateTime?
+}
+

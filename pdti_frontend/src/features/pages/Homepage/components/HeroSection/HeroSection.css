@@ -1,0 +1,42 @@
+.hero-section {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4rem;
+  align-items: center;
+  padding: 2rem 2rem;
+  box-sizing: border-box;
+}
+
+.hero-title {
+  flex: 1 1 400px; /* left side grows/shrinks */
+  text-align: start;
+  font-size: 3.5rem;
+  font-weight: bold;
+  line-height: 6rem;
+  margin-bottom: 1rem;
+}
+
+.images-section {
+  flex: 1 1 500px;
+  min-width: 350px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .hero-section {
+    flex-direction: column; /* stack vertically on smaller screens */
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .hero-title {
+    text-align: center;
+  }
+
+  .images-section {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
