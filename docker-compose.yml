@@ -1,3 +1,5 @@
+version: "3.9"
+
 services:
   db_pdti:
     container_name: db_pdti
@@ -24,8 +26,8 @@ services:
     environment:
       PMA_HOST: ${DB_HOST}
       PMA_ARBITRARY: 1
-    ports:
-      - 8081:80
+    expose:
+      - "80"
     networks:
       - pdti_networks
 
@@ -33,18 +35,16 @@ services:
     container_name: pdti-backend
     stdin_open: true
     tty: true
-    command: sh -c "yarn start & yarn run studio"
+    command: sh -c "yarn start"
     restart: always
     build:
       context: ./pdti_backend
       dockerfile: Dockerfile
-    ports:
-      - "${API_PORT}:${API_PORT}"
-      - "${STUDIO_PORT}:${STUDIO_PORT}"
+    expose:
+      - "${API_PORT}"
     depends_on:
       db_pdti:
         condition: service_healthy
-
     env_file:
       - .env
     networks:
@@ -55,10 +55,25 @@ services:
     build:
       context: ./pdti_frontend
       dockerfile: Dockerfile
-    ports:
-      - "${FRONTEND_PORT}:${FRONTEND_PORT}"
     restart: always
+    expose:
+      - "${FRONTEND_PORT}"
     depends_on:
+      - pdti-backend
+    networks:
+      - pdti_networks
+
+  nginx:
+    container_name: pdti-nginx
+    image: nginx:latest
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+    depends_on:
+      - pdti-frontend
+      - php-my-admin
       - pdti-backend
     networks:
       - pdti_networks
