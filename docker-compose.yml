@@ -1,5 +1,4 @@
 services:
-  # MySQL Database
   db_pdti:
     container_name: db_pdti
     image: mysql:latest
@@ -9,7 +8,7 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_ALLOW_EMPTY_PASSWORD: "no"
     ports:
-      - 3307:${DB_PORT} # optional, remove if you want internal-only
+      - 3307:${DB_PORT}
     networks:
       - pdti_networks
     healthcheck:
@@ -18,7 +17,6 @@ services:
       timeout: 5s
       retries: 20
 
-  # phpMyAdmin (internal, accessed via Nginx)
   php-my-admin:
     container_name: php-my-admin
     image: phpmyadmin:latest
@@ -26,60 +24,45 @@ services:
     environment:
       PMA_HOST: ${DB_HOST}
       PMA_ARBITRARY: 1
-    expose:
-      - "80" # internal only
+    ports:
+      - 8081:80
     networks:
       - pdti_networks
 
-  # Backend
   pdti-backend:
     container_name: pdti-backend
     stdin_open: true
     tty: true
-    command: sh -c "yarn start" # Run only main process in foreground
+    command: sh -c "yarn start & yarn run studio"
     restart: always
     build:
       context: ./pdti_backend
       dockerfile: Dockerfile
-    expose:
-      - "${API_PORT}" # internal, Nginx will proxy
+    ports:
+      - "${API_PORT}:${API_PORT}"
+      - "${STUDIO_PORT}:${STUDIO_PORT}"
+    #expose:
+    #  - "4003"
+    #  - "5555"
     depends_on:
       db_pdti:
         condition: service_healthy
+
     env_file:
       - .env
     networks:
       - pdti_networks
 
-  # Frontend
   pdti-frontend:
     container_name: pdti-frontend
     build:
       context: ./pdti_frontend
       dockerfile: Dockerfile
-    restart: always
-    expose:
-      - "${FRONTEND_PORT}" # internal, Nginx will proxy
-    depends_on:
-      - pdti-backend
-    networks:
-      - pdti_networks
-
-  # Nginx Reverse Proxy
-  nginx:
-    container_name: nginx-proxy
-    image: nginx:latest
-    restart: always
     ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./nginx/certs:/etc/letsencrypt # For SSL
+      - "${FRONTEND_PORT}:${FRONTEND_PORT}"
+    restart: always
     depends_on:
       - pdti-backend
-      - pdti-frontend
-      - php-my-admin
     networks:
       - pdti_networks
 
