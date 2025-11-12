@@ -30,7 +30,7 @@ const start = async () => {
   try {
     // Register CORS
     await fastify.register(cors, {
-      origin: [`https://pdti-essemara.ma/`, `http://localhost:${frontendPort}`],
+      origin: [`https://pdti-essemara.ma`, `http://localhost:${frontendPort}`],
       methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     });
 
