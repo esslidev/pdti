@@ -30,11 +30,7 @@ const start = async () => {
   try {
     // Register CORS
     await fastify.register(cors, {
-      origin: [
-        `http://localhost:5173`,
-        `http://localhost:${frontendPort}`,
-        `http://192.168.0.108:${frontendPort}`,
-      ],
+      origin: [`https://pdti-essemara.ma/`, `http://localhost:${frontendPort}`],
       methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     });
 
@@ -62,7 +58,7 @@ const start = async () => {
     });
 
     await fastify.listen({ port: apiPort, host: "0.0.0.0" });
-    fastify.log.info(`🚀 API listening at http://localhost:${apiPort} 🚀`);
+    fastify.log.info(`🚀 API listening 🚀`);
   } catch (err) {
     fastify.log.error(err);
     process.exit(1);
