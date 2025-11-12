@@ -7,10 +7,12 @@ services:
       MYSQL_DATABASE: ${DB_NAME}
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_ALLOW_EMPTY_PASSWORD: "no"
-    ports:
-      - 3307:${DB_PORT}
+    expose:
+      - "3306"
     networks:
       - pdti_networks
+    volumes:
+      - db-data:/var/lib/mysql
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-p${DB_PASSWORD}"]
       interval: 5s
@@ -33,14 +35,13 @@ services:
     container_name: pdti-backend
     stdin_open: true
     tty: true
-    command: sh -c "yarn start & yarn run studio"
+    command: sh -c "yarn start"
     restart: always
     build:
       context: ./pdti_backend
       dockerfile: Dockerfile
     ports:
       - "${API_PORT}:${API_PORT}"
-      ## - "${STUDIO_PORT}:${STUDIO_PORT}"
     depends_on:
       db_pdti:
         condition: service_healthy
@@ -66,3 +67,6 @@ services:
 networks:
   pdti_networks:
     driver: bridge
+
+volumes:
+  db-data:
