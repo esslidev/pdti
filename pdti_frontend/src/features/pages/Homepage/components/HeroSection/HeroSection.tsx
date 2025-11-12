@@ -1,11 +1,12 @@
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
+//import ImageList from "@mui/material/ImageList";
+//import ImageListItem from "@mui/material/ImageListItem";
 import hero1 from "./../../../../../assets/images/hero-1.jpg";
 import hero2 from "./../../../../../assets/images/hero-2.jpg";
 import hero3 from "./../../../../../assets/images/hero-3.jpg";
 import hero4 from "./../../../../../assets/images/hero-4.jpg";
 import hero5 from "./../../../../../assets/images/hero-5.jpg";
 import hero6 from "./../../../../../assets/images/hero-6.jpg";
+import heroMain from "./../../../../../assets/images/hero-main.jpeg";
 
 import "./HeroSection.css";
 
@@ -43,11 +44,11 @@ const HeroSection = () => {
   return (
     <section className="hero-section">
       <h1 className="hero-title">
-        اللقاءات التواصلية و المشاورات الموسعة من أجل اعداد برنامج التنمية
+        اللقاءات التواصلية <br />و المشاورات الموسعة من أجل اعداد برنامج التنمية
         الترابية المندمجة الخاص بإقليم السمارة
       </h1>
       <div className="images-section">
-        <ImageList variant="quilted" cols={3} gap={6}>
+        {/*<ImageList variant="quilted" cols={3} gap={6}>
           {itemData.map((item) => (
             <ImageListItem
               key={item.img}
@@ -62,7 +63,8 @@ const HeroSection = () => {
               />
             </ImageListItem>
           ))}
-        </ImageList>
+        </ImageList>*/}
+        <img src={heroMain} width={"100%"} alt={"essemara"} loading="lazy" />
       </div>
     </section>
   );

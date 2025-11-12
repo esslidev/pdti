@@ -1,8 +1,8 @@
 .header {
   width: 100%;
   background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 16px 60px;
+  box-shadow: 8px 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
 }
 
 .header-container {
