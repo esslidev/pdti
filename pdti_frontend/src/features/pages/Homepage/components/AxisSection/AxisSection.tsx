@@ -33,7 +33,7 @@ const AxisSection = () => {
     {
       axisId: "4",
       axisTitle: "المحور الرابع",
-      description: "التدبير الإستباقي والمستدام للموارد البشرية",
+      description: "التدبير الإستباقي والمستدام للموارد المائية",
       imageUrl: axis4,
     },
     {

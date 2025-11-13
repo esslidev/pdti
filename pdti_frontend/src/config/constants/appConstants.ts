@@ -1,1 +1,1 @@
-export const appEmail = "PDTI@essmara.interieur.gov.ma";
+export const appEmail = "PDTI@essemara.interieur.gov.ma";
