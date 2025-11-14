@@ -27,3 +27,17 @@
     opacity: 1;
   }
 }
+
+@media (max-width: 700px) {
+  .overlay-content {
+    min-width: 470px;
+    border-radius: 4px;
+  }
+}
+
+@media (max-width: 470px) {
+  .overlay-content {
+    min-width: 95vw;
+    border-radius: 4px;
+  }
+}
