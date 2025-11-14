@@ -62,3 +62,10 @@ textarea:focus {
   margin-bottom: 1rem;
   font-weight: 500;
 }
+
+@media (max-width: 470px) {
+  .proposition-form-container {
+    padding: 0rem;
+    box-shadow: none;
+  }
+}
